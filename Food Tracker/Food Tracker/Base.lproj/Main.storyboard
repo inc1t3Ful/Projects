@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8Jy-HZ-hkr">
+                                <rect key="frame" x="20" y="80" width="560" height="493"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAn-sr-tfg">
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="djx-1i-k0R">
+                                        <rect key="frame" x="0.0" y="33" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1n-DB-LY8">
+                                        <rect key="frame" x="0.0" y="75" width="151" height="30"/>
+                                        <state key="normal" title="Set Default Label Text"/>
+                                        <connections>
+                                            <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7bi-a2-9dv"/>
+                                        </connections>
+                                    </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="9PK-es-bOr">
+                                        <rect key="frame" x="0.0" y="117" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="9PK-es-bOr" secondAttribute="height" multiplier="1:1" id="ZXP-I2-mmu"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="RBA-94-6vW" appends="YES" id="1jb-LI-OJN"/>
+                                        </connections>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="Hua-cx-w53" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="449" width="240" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="djx-1i-k0R" secondAttribute="trailing" id="2MF-eO-fFo"/>
+                                    <constraint firstItem="djx-1i-k0R" firstAttribute="leading" secondItem="8Jy-HZ-hkr" secondAttribute="leading" id="LLd-zQ-APm"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Jy-HZ-hkr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="88c-kI-Y3x"/>
+                            <constraint firstItem="8Jy-HZ-hkr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="GPj-De-cte"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Jy-HZ-hkr" secondAttribute="trailing" id="Usb-Y2-5M6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mealNameLabel" destination="sAn-sr-tfg" id="eF1-vk-Sip"/>
+                        <outlet property="nameTextField" destination="djx-1i-k0R" id="kof-AZ-b3w"/>
+                        <outlet property="photoImageView" destination="9PK-es-bOr" id="2a4-IT-ces"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="RBA-94-6vW">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="VHL-Ms-ZSu"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-1309" y="311"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
+</document>
