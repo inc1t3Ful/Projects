@@ -98,6 +98,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     // MARK: Navigation
     
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        
+        // dismiss the meal scene without storing any information. When the meal scene gets dismissed, the meal list is shown.
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
