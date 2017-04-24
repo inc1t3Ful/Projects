@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+====================HEAD=====================
+-->
+<head>
+
+	<title>Support CCHS</title>
+	
+<style>
+table, th, td {
+	border: 1px solid black;
+}
+th, td{
+	padding: 15px;
+
+}
+
+</style>
+
+</head>
+
+<!--
+=====================BODY======================
+-->
+<body>
+<center>
+
+<h1>California Crosspoint High School Registry</h1>
+<h4>Transforming Lives for the Glory of God</h4>
+<h2>Please help donate to help us with funding and equipment costs for our new campus</h2>
+
+<!--Feel free to own background style/ pictures.
+	Current code stands as fully functional with minimal styling-->
+
+<!--Table per category-->
+<table style = "width:100%">
+	<center>
+	<!--Category title-->
+	
+	<caption><font size = "5"><b>insert category *ie: Classroom supplies*</font></b></caption>
+
+	<tr>
+		<th>Item</th>
+		<th>Description</th>
+		<th>Price</th>
+		<th>Requested</th>
+		<th>Purchased</th>
+		<th>Quantity</th>
+		<!--Leave blank unless completed aka Status-->
+		<th>Status</th>
+	</tr>
+	<!--dummy data for example-->
+	<tr>
+		<td>Item1</td>
+		<td>Item1 Description</td>
+		<td>Item1 Price</td>
+		<td>Item1 Req. #</td>
+		<td>Item1 Purchased #</td>
+		<td>
+			<form action="http://www.cchsrams.org/support-us/">
+			<input type = "text" name = "T1item1quantity">
+			<input type = "submit" value = "Purchase" onclick = "ItemReqCheck()">
+			</form>
+		</td>
+		<td><font color = "white">Purchased!</font></td>
+
+	<tr>
+		<td>Item2</td>
+		<td>Item2 Description</td>
+		<td>Item2 Price</td>
+		<td>Item2 Req. #</td>
+		<td>Item2 Purchased #</td>
+		<td>
+			<form action="http://www.cchsrams.org/support-us/">
+			<input type = "text" name = "T1item2quantity">
+			<input type = "submit" value = "Purchase" onclick = "ItemReqCheck()">
+			</form>
+		</td>
+		<td><font color = "white">Purchased!</font></td>
+
+	<tr>
+		<td>Item3</td>
+		<td>Item3 Description</td>
+		<td>Item3 Price</td>
+		<td>Item3 Req. #</td>
+		<td>Item3 Purchased #</td>
+		<td>
+			<form action="http://www.cchsrams.org/support-us/">
+			<input type = "text" name = "T1item3quantity">
+			<input type = "submit" value = "Purchase" onclick = "ItemReqCheck()">
+			</form>
+		</td>
+		<td><font color = "white">Purchased!</font></td>	
+
+	</center>
+</table>
+
+<br>	
+<table style = "width:100%">
+	<center>
+	<!--Category title-->
+	
+	<caption><font size = "5"><b>insert category *ie: Lab equipment*</font></b></caption>
+
+	<tr>
+		<th>Item</th>
+		<th>Description</th>
+		<th>Price</th>
+		<th>Requested</th>
+		<th>Purchased</th>
+		<th>Quantity</th>
+		<!--Leave blank unless completed aka Status-->
+		<th>Status</th>
+	</tr>
+	<!--dummy data for example-->
+	<tr>
+		<td>Item1</td>
+		<td>Item1 Description</td>
+		<td>Item1 Price</td>
+		<td>Item1 Req. #</td>
+		<td>Item1 Purchased #</td>
+		<td>
+			<form action="http://www.cchsrams.org/support-us/">
+			<input type = "text" name = "T2item1quantity">
+			<input type = "submit" value = "Purchase" onclick = "ItemReqCheck()">
+			</form>
+		</td>
+		<td><font color = "white">Purchased!</font></td>
+
+	<tr>
+		<td>Item2</td>
+		<td>Item2 Description</td>
+		<td>Item2 Price</td>
+		<td>Item2 Req. #</td>
+		<td>Item2 Purchased #</td>
+		<td>
+			<form action="http://www.cchsrams.org/support-us/">
+			<input type = "text" name = "T2item2quantity">
+			<input type = "submit" value = "Purchase" onclick = "ItemReqCheck()">
+			</form>
+		</td>
+		<td><font color = "white">Purchased!</font></td>
+
+	<tr>
+		<td>Item3</td>
+		<td>Item3 Description</td>
+		<td>Item3 Price</td>
+		<td>Item3 Req. #</td>
+		<td>Item3 Purchased #</td>
+		<td>
+			<form action="http://www.cchsrams.org/support-us/">
+			<input type = "text" name = "T2item3quantity">
+			<input type = "submit" value = "Purchase" onclick = "ItemReqCheck()">
+			</form>
+		</td>
+		<td><font color = "white">Purchased!</font></td>	
+
+	</center>
+</table>
+</br>
+
+<br>
+<form>
+  <input type="button" value="Click here for a surprise" onclick="msg()">
+</form>
+
+<script>
+function msg() {
+    alert("HA. GAY!");
+}
+</script>
+
+
+</center>
+
+<!--
+1. implement change function when buy button is clicked, check if Item req == Item Purchased, if yes, change font of "Purchased" from white to green
+
+2. implement reroute to CCHS donate page
+
+3. save quantity # to variable item#quantity. take price, multiply. save to variable costitem1
+
+4. Add all total prices together for final variable totalcost
+
+5. Print to memo page: "Item x"item#quantity""
+	Print to Amount variable totalcost
+
+<b>Enter your SSN: </b>
+<input type = “text” id=“ssn” />
+
+<button onclick ="letemknow()"> Enter </button>
+
+<script type = "text/javascript">
+
+function letemknow()
+{
+	var x = document.getElementById("ssn").value;
+	alert("Your SSN is "+x+". Byebye hehe xd");
+}
+-->
+</body>
+</html>
