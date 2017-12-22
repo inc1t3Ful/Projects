@@ -3,29 +3,47 @@
 <html>
 <center>
   <heading>
-    heading
+    <h1>heading</h1>
   </heading>
 
   <p>
     paragraph
   </p>
 
-  <button onclick="myLoop()">
-    Test Here
+  <button onclick="myAlert()">
+    Alert
+  </button>
+
+  <button onclick="myConfirm()">
+    Confirm
   </button>
 
 </center>
 
-<!-- Difference between alert() and confirm()-->
+<!-- script for alertbox -->
 <script>
-function myLoop(){
-  <!-- set infinite loop -->
-  var x = 0
-  while(x == 0) {
-    alert("Spam time");
+  function myAlert(){
+    <!-- set infinite loop -->
+    var x = 0;
+    while(x == 0) {
+      alert("Spam time");
+    }
   }
-}
 </script>
+
+<!-- script for confirmbox -->
+<script>
+  function myConfirm(){
+    var y = 0;
+    while(y == 0) {
+      confirm("Confirm time");
+    }
+  }
+</script>
+
+<!-- <script language = "JavaScript">
+
+</script> -->
 
 
 </html>
