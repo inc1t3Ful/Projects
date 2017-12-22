@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <center>
+
   <heading>
     <h1>heading</h1>
   </heading>
@@ -10,29 +11,19 @@
     paragraph
   </p>
 
-  <button onclick="myAlert()">
-    Alert
-  </button>
-
-  <button onclick="myConfirm()">
-    Confirm
-  </button>
+  <button onclick="myAlert()">Alert</button>
+  <button onclick="myConfirm()">Confirm</button>
 
 </center>
 
-<!-- script for alertbox -->
 <script>
   function myAlert(){
-    <!-- set infinite loop -->
     var x = 0;
     while(x == 0) {
       alert("Spam time");
     }
   }
-</script>
 
-<!-- script for confirmbox -->
-<script>
   function myConfirm(){
     var y = 0;
     while(y == 0) {
@@ -41,8 +32,12 @@
   }
 </script>
 
-<!-- <script language = "JavaScript">
 
+<!-- <script language="JavaScript">
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        return "You have attempted to leave this page. Are you sure?";
+    }
 </script> -->
 
 
