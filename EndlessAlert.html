@@ -11,26 +11,34 @@
     paragraph
   </p>
 
-  <button onclick="myAlert()">Alert</button>
-  <button onclick="myConfirm()">Confirm</button>
+  <button onclick="loopAlert()">Alert</button>
+  <button onclick="loopConfirm()">Confirm</button>
 
 </center>
 
-<script>
-  function myAlert(){
+<script language = "javascript" type = "text/javascript">
+  function loopAlert(){
     var x = 0;
     while(x == 0) {
       alert("Spam time");
     }
   }
 
-  function myConfirm(){
+  function loopConfirm(){
     var y = 0;
     while(y == 0) {
       confirm("Confirm time");
     }
   }
+
+  function onExit(){
+    return "No";
+  }
+
+  window.onbeforeunload = onExit;
 </script>
+
+
 
 
 <!-- <script language="JavaScript">
