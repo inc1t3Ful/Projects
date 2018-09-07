@@ -16,13 +16,13 @@ addresses = ["sharklasers.com", "guerillamail.info", "grr.la", "guerillamail.com
 email = addresses[random.randint(0, len(addresses)-1)]
 
 # birthday function
-year = random.randint(1990, 2001)
-month = random.randint(1, 12)
-day = random.randint(1, 31)
+year = str(random.randint(1990, 2001))
+month = str(random.randint(1, 12))
+day = str(random.randint(1, 31))
 
 print(" ")
-print("Gender: ", gender)
-print("Password: ", password)
-print("Email: ", email)
-print("Birthday: ", year, month, day)
+print("Gender: " + gender)
+print("Password: " + password)
+print("Email: " + email)
+print("Birthday: " + year + "-" + month + "-" + day)
 print(" ")
