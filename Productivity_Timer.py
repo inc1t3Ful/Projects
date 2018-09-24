@@ -1,3 +1,7 @@
+# Productivity_Timer.py by Anthony Lee
+# v1.0
+# Last update: 23 Sep 2018
+
 import sys
 import string
 import time
@@ -7,10 +11,10 @@ sa = sys.argv
 lsa = len(sys.argv)
 
 # argument length check
-if lsa != 2:
+if lsa != 3:
     print " "
-    print ">> Usage: [ python ] Productivity_Timer.py duration_in_minutes"
-    print ">> Example: [ python ] Productivity_Timer.py 10 <<"
+    print ">> Usage: [ python ] Productivity_Timer.py study_minutes break_minutes"
+    print ">> Example: [ python ] Productivity_Timer.py 30 10"
     print " "
     print ">> Use a value of 0 minutes for testing the alarm immediately."
     print ">> Boops a few times after the duration is over."
@@ -24,47 +28,58 @@ if lsa != 2:
 
 # check argument type
 try:
-    minutes = int(sa[1])
+    study_minutes = int(sa[1])
+    break_minutes = int(sa[2])
 except ValueError:
     print " "
-    print ">> Invalid numeric value (%s) for minutes" % sa[1]
+    print ">> Invalid numeric value (%s) for minutes" % sa[1] %sa[2]
     print ">> Should be an integer >= 0"
     print " "
     print ">> Now exiting..."
     sys.exit(1)
 
-if minutes < 0:
+if study_minutes < 0 || break_minutes < 0:
     print " "
-    print ">> Invalid value for minutes, should be >= 0"
+    print ">> Invalid value for minutes"
+    print ">> Should be >= 0"
     print " "
     print ">> Now exiting..."
     sys.exit(1)
 
 # unit measurment variable
-if minutes == 1:
+if study_minutes == 1:
     unit_word = " minute"
 else:
     unit_word = " minutes"
 
-# run timer. update every minute, notify when time up
+if break_minutes == 1:
+    unit_word = " minute"
+else:
+    unit_word = " minutes"
+
+# run timer. update every minute, boops when time up
 try:
-    if minutes > 0:
+    # study timer
+    if study_minutes > 0:
         print " "
-        print "Break time will be in " + str(minutes) + unit_word + "! Time to work c:"
-        while minutes != 0:
+        print "Break time will be in " + str(study_minutes) + unit_word + "! Time to work c:"
+        while study_minutes != 0:
             print " "
-            print " ~ " + str(minutes) + unit_word + " left before break ~"
+            print " ~ " + str(study_minutes) + unit_word + " left before break ~"
             time.sleep(60)
-            minutes -= 1
+            study_minutes -= 1
     for i in range(5):
         print chr(7),
         sleep(1)
     print " "
     print "Break time! :D"
     print " "
+
+    # break timer WIP
+
     print ">> Now exiting..."
 
-# turn off timer
+# manual override timer
 except KeyboardInterrupt:
     print " "
     print " "
