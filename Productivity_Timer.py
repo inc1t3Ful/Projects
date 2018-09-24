@@ -9,12 +9,15 @@ lsa = len(sys.argv)
 # argument length check
 if lsa != 2:
     print " "
-    print ">> Usage: [ python ] timer.py duration_in_minutes"
-    print ">> Example: [ python ] timer.py 10 <<"
+    print ">> Usage: [ python ] Productivity_Timer.py duration_in_minutes"
+    print ">> Example: [ python ] Productivity_Timer.py 10 <<"
     print " "
     print ">> Use a value of 0 minutes for testing the alarm immediately."
     print ">> Boops a few times after the duration is over."
     print ">> Press Ctrl-C to terminate the alarm clock early."
+    print " "
+    print ">> Studies suggests maximum productivity can be achieved with :"
+    print ">> ~52 minute work intervals and ~17 minute breaks "
     print " "
     print ">> Now exiting..."
     sys.exit(1)
