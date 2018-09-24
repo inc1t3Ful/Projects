@@ -50,7 +50,7 @@ try:
         print "Break time will be in " + str(minutes) + unit_word + "! Time to work c:"
         while minutes != 0:
             print " "
-            print " ~ " + str(minutes) + " minutes left before break ~"
+            print " ~ " + str(minutes) + unit_word + " left before break ~"
             time.sleep(60)
             minutes -= 1
     for i in range(5):
