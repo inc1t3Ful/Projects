@@ -2,32 +2,32 @@ import random
 import string
 
 # identity function
-genderList = ["M" , "F"]
-gender = genderList[random.randint(0, len(genderList)-1)]
+GENDER_LIST = ["M", "F"]
+GENDER = GENDER_LIST[random.randint(0, len(GENDER_LIST)-1)]
 
 # password function
-passLength = input("Length of password: ")
-x = int(passLength)
-password = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(x))
+PASS_LENGTH = input("Length of password: ")
+INT_PASS_LENGTH = int(PASS_LENGTH)
+PASSWORD = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(INT_PASS_LENGTH))
 
 # email function
 # selfnote: sharklasers, guerillamail, mailinator, index.net = tempmailaddress.com
-addresses = ["sharklasers.com", "guerillamail.info", "grr.la", "guerillamail.com", "guerillamail.net", "guerillamail.org", "pokemail.net", "spam4.me", "mailinator.com", "index.net"]
-email = addresses[random.randint(0, len(addresses)-1)]
+ADDRESSES = ["sharklasers.com", "guerillamail.info", "grr.la", "guerillamail.com", "guerillamail.net", "guerillamail.org", "pokemail.net", "spam4.me", "mailinator.com", "index.net"]
+EMAIL = ADDRESSES[random.randint(0, len(ADDRESSES)-1)]
 
 # birthday function
-year = str(random.randint(1990, 2001))
-month = str(random.randint(1, 12))
-if(month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12):
-    day = str(random.randint(1, 31))
-elif(month == 4 or month == 6 or month == 9 or month == 11):
-    day = str(random.randint(1, 30))
+YEAR = str(random.randint(1990, 2001))
+MONTH = str(random.randint(1, 12))
+if MONTH in (1, 3, 5, 7, 8, 10, 12):
+    DAY = str(random.randint(1, 31))
+elif MONTH in (4, 6, 9, 11):
+    DAY = str(random.randint(1, 30))
 else:
-    day = str(random.randint(1, 28))
+    DAY = str(random.randint(1, 28))
 
-print(" ")
-print("Gender: " + gender)
-print("Password: " + password)
-print("Email: " + email)
-print("Birthday: " + year + "-" + month + "-" + day)
-print(" ")
+print " "
+print "GENDER: " + GENDER
+print "PASSWORD: " + PASSWORD
+print "EMAIL: " + EMAIL
+print "Birthday: " + YEAR + "-" + MONTH + "-" + DAY
+print " "
