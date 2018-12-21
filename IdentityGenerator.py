@@ -1,7 +1,16 @@
+"""
+IdentityGenerator.py by Anthony Lee
+v1.3
+Last updated: 20 Dec 2018
+
+This script allows you to randomly generate an identity for anonomyous account
+across various platforms / services.
+"""
+
 import random
 import string
 from six.moves import input as raw_input # to maintain usability between Python 2 and 3
-import os #;; I WANT TO ADD TEXT CENTERING
+import os # for text centering
 
 # TO DO:
 # 1. CENTER THE TEXT APPROPRIATELY FOR UI
