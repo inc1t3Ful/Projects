@@ -1,17 +1,21 @@
 """
 Productivity_Timer.py by Anthony Lee
 v2.1
-Last update: 20 Dec 2018
+Last updated: 20 Dec 2018
 
 This script is serves as a timer to facilitate productivity; it does so by
 tracking specified work periods and break times, notifying users of their respective
 starts and stops.
 """
-
 import sys
 import string
 import time
 from time import sleep
+
+# TODO:
+# 1. modularize code into FUNCTIONS
+# 2. add ability to loop program a number of times
+# 3. improve UI
 
 sysArg = sys.argv
 len_sysArg = len(sys.argv)
