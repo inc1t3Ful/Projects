@@ -1,10 +1,10 @@
 """
 IdentityGenerator.py by Anthony Lee
-v2.0
-Last updated: 20 Dec 2018
+v2.0.1
+Last updated: 21 Dec 2018
 
 This script allows you to randomly generate an identity for anonomyous account
-across various platforms / services.
+creation across various platforms / services.
 """
 
 import random
@@ -21,10 +21,10 @@ GENDER_LIST = ["M", "F"]
 
 YES = ["yes", "y", ""]
 NO = ["no", "n"]
-SPECIAL_CHAR_STATUS = 0
-INT_PASS_LENGTH = 0
 
-DOMAIN_LIST = ["sharklasers.com", "guerillamail.info", "grr.la", "guerillamail.com", "guerillamail.net", "guerillamail.org", "pokemail.net", "spam4.me", "mailinator.com", "index.net"]
+DOMAIN_LIST = ["sharklasers.com", "guerillamail.info", "grr.la",
+            "guerillamail.com", "guerillamail.net", "guerillamail.org",
+            "pokemail.net", "spam4.me", "mailinator.com", "index.net"]
 
 MONTH_31 = [1, 3, 5, 7, 8, 10, 12]
 MONTH_30 = [4, 6, 9, 11]
@@ -54,28 +54,31 @@ def DECIDE_PASS_LENGTH(PASS_LENGTH):
     INT_PASS_LENGTH = int(PASS_LENGTH)
     return INT_PASS_LENGTH
 
+# requests input to allow/ disallow special char in PASSWORD; raises flag
 def DECIDE_PASS_SPECIAL():
     print(" ")
     SPECIAL_CHAR_STATUS = input(" >>> Allow special characters (punctuation) in password? [Y / N]: ".center(OS_WIDTH)).lower()
     if SPECIAL_CHAR_STATUS in YES:
         SPECIAL_CHAR_STATUS = True
         return SPECIAL_CHAR_STATUS
-        # break
     elif SPECIAL_CHAR_STATUS in NO:
         SPECIAL_CHAR_STATUS = False
         return SPECIAL_CHAR_STATUS
-        # break
     else:
         print(" ")
         print(("ERROR: Please input Y or N < case insensitive >").center(OS_WIDTH))
         DECIDE_PASS_SPECIAL()
 
+# takes special char flag and password length parameter as rules for generating PASSWORD
 def DECIDE_PASS(SPECIAL_CHAR_STATUS, INT_PASS_LENGTH):
     if SPECIAL_CHAR_STATUS:
-        PASSWORD = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits + string.punctuation) for _ in range(INT_PASS_LENGTH))
+        PASSWORD = ''.join(random.SystemRandom().choice(string.ascii_letters
+                    + string.digits
+                    + string.punctuation) for _ in range(INT_PASS_LENGTH))
         return PASSWORD
     else:
-        PASSWORD = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(INT_PASS_LENGTH))
+        PASSWORD = ''.join(random.SystemRandom().choice(string.ascii_letters
+                    + string.digits) for _ in range(INT_PASS_LENGTH))
         return PASSWORD
 
 def DECIDE_YEAR():
@@ -99,14 +102,14 @@ def DECIDE_DAY(MONTH):
 def PRINT_OUTPUT():
     print(("{:<35}".format("GENDER: " + DECIDE_GENDER())).center(OS_WIDTH))
     print(("{:<35}".format("EMAIL DOMAIN: " + DECIDE_EMAIL())).center(OS_WIDTH))
-    print(("{:<35}".format("PASSWORD: " + DECIDE_PASS(SPECIAL_CHAR_STATUS, DECIDE_PASS_LENGTH(PASS_LENGTH)))).center(OS_WIDTH))
+    print(("{:<35}".format("PASSWORD: " + DECIDE_PASS(SPECIAL_CHAR_STATUS, INT_PASS_LENGTH))).center(OS_WIDTH))
     print(("{:<35}".format("BIRTHDAY: " + DECIDE_YEAR() + "-" + DECIDE_MONTH() + "-" + DECIDE_DAY(DECIDE_MONTH()))).center(OS_WIDTH))
     print(" ")
 
 ### PROGRAM FLOW ###
-# start program block
+# start program block header
 print(" ")
-print((HEADER_BLOCK.center(OS_WIDTH))) # text centering is working
+print((HEADER_BLOCK.center(OS_WIDTH)))
 print(("Start of Program").center(OS_WIDTH))
 print((HEADER_BLOCK.center(OS_WIDTH)))
 print(" ")
@@ -116,7 +119,7 @@ print(("This includes the following:").center(OS_WIDTH))
 PRINT_FEATURES(FEATURES_LIST)
 print(" ")
 
-# input block
+# input block header
 print(" ")
 print((HEADER_BLOCK.center(OS_WIDTH)))
 print(("Input: ").center(OS_WIDTH))
@@ -125,14 +128,16 @@ print(" ")
 
 # take input
 # note to self: all other functions are ran at PRINT_OUTPUT()
-# this is because they are static return functions; compared to the password
-# function, that calls for specific input and has vars that get passed around
+# this is because they are static return functions; password function calls for
+# multiple inputs and passing of variables, so input inquiry is separated from
+# decider logic
 PASS_LENGTH = input(" >>> Enter desired password length: ".center(OS_WIDTH))
+INT_PASS_LENGTH = DECIDE_PASS_LENGTH(PASS_LENGTH)
 print(" ")
 print(("By default, password generated will allow inclusion of special characters.").center(OS_WIDTH))
 SPECIAL_CHAR_STATUS = DECIDE_PASS_SPECIAL()
 
-# output block
+# output block header
 print(" ")
 print((HEADER_BLOCK.center(OS_WIDTH)))
 print(("Output:").center(OS_WIDTH))
@@ -141,7 +146,7 @@ print(" ")
 
 PRINT_OUTPUT()
 
-# eof block
+# eof block header
 print((HEADER_BLOCK.center(OS_WIDTH)))
 print(("End of Program").center(OS_WIDTH))
 print((HEADER_BLOCK.center(OS_WIDTH)))

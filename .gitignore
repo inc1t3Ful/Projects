@@ -1,0 +1,6 @@
+## file types
+*.zip
+*.exe
+
+## specific files
+/Productivity\ Scripts/chromedriver
