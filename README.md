@@ -17,7 +17,7 @@ Personal projects for self-learning
 
 ## Others
 #### Food Tracker
-  ** iOS app that logs foods + pictures || iOS app demo
+ * iOS app that logs foods + pictures || iOS app demo
 ### Productivity Scripts
 #### IdentityGenerator.py
  * Randomly generate identities for anonomyous account creation
