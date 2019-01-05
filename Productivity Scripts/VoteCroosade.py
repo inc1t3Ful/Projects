@@ -1,7 +1,7 @@
 """
 VoteCroosade.py by Anthony Lee
 v2.0
-Last updated: 02 Jan 2019
+Last updated: 03 Jan 2019
 
 #########################################################################
 This script automates the voting process for CroosadeMS v100, a
@@ -54,7 +54,7 @@ def pageLoadSleep(x):
     time.sleep(x)
 
 # This locks loop to system clock; guaranteed run every x interval
-# NOTE: sleep is in seconds (21660 seconds = 6 HR 1 MIN; Script runs ~30 SEC)
+# NOTE: sleep is in seconds (21900 seconds = 6 HR 5 MIN; Script runs ~30 SEC)
 while True:
     # NOTE: Place script in same directory as ChromeWebdriver or vice versa;
     # NOTE: EDIT PATH TO CHROMEDRIVER.EXE ON LINE BELOW
@@ -66,6 +66,7 @@ while True:
 
     ## Navigate to Croosade main site
     print("")
+    print("Current time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
     print(">> Navigating to Croosade site")
     driver.get("https://croosade.com/")
     pageLoadSleep(1)
@@ -138,8 +139,8 @@ while True:
     ## Loop block
     print("")
     print("Current time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
-    print(">> Script will automatically rerun in 6 hours")
+    print(">> Script will automatically rerun in ~ 6 hours")
     print("")
     print("Please do not close your Command Prompt/ Terminal")
     print("To stop the program at any time, press CTRL + C")
-    time.sleep(21660.0 - ((time.time() - starttime) % 21660.0)) # DO NOT CHANGE TIME
+    time.sleep(21900.0 - ((time.time() - starttime) % 21900.0)) # DO NOT CHANGE TIME
