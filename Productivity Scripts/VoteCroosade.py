@@ -1,7 +1,7 @@
 """
 VoteCroosade.py by Anthony Lee
 v2.0
-Last updated: 03 Jan 2019
+Last updated: 11 Jan 2019
 
 #########################################################################
 This script automates the voting process for CroosadeMS v100, a
@@ -25,7 +25,7 @@ USAGE: ($ represents command-line arg)
 same directory as this script
 
 4. Note directory path and update it accordingly in this script as denoted on
-line 61. DO NOT remove the quotation marks ("")
+line 61. DO NOT remove the quotation marks ("") or the "options = options"
 
 5. Fill in login credentials as denoted on lines 64-65. DO NOT remove the
 quotation marks ("")
@@ -35,8 +35,8 @@ quotation marks ("")
 
 #########################################################################
 """
-# import webbrowser as wb
 from selenium import webdriver
+# from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -48,14 +48,14 @@ starttime = time.time()
 # Repetitive block to buffer page loading
 # USAGE: x = seconds to sleep
 def pageLoadSleep(x):
-    print("")
-    print("Ensuring page loads...")
-    print("")
+    print("\nEnsuring page loads...\n")
     time.sleep(x)
 
 # This locks loop to system clock; guaranteed run every x interval
-# NOTE: sleep is in seconds (21900 seconds = 6 HR 5 MIN; Script runs ~30 SEC)
+# NOTE: sleep is in seconds (21630 seconds = 6 HR 30 S; Script runs ~15 SEC)
 while True:
+    # options = Options()
+    # options.headless = True
     # NOTE: Place script in same directory as ChromeWebdriver or vice versa;
     # NOTE: EDIT PATH TO CHROMEDRIVER.EXE ON LINE BELOW
     driver = webdriver.Chrome("/filepath/chromedriver")
@@ -65,8 +65,7 @@ while True:
     password = "password"
 
     ## Navigate to Croosade main site
-    print("")
-    print("Current time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
+    print("\nCurrent time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
     print(">> Navigating to Croosade site")
     driver.get("https://croosade.com/")
     pageLoadSleep(1)
@@ -80,8 +79,7 @@ while True:
     signInButton.click()
 
     ## Enter login credentials
-    print("")
-    print("Currently on: << " + driver.current_url + " >>")
+    print("\nCurrently on: << " + driver.current_url + " >>")
     print(">> Inputting username and password")
     print(">> Username: " + username)
     print(">> Password: " + password)
@@ -94,8 +92,7 @@ while True:
     passwordField.send_keys(password)
     submitLogin = driver.find_element_by_css_selector("#formLogin > button")
     submitLogin.click()
-    print("")
-    print("Logging in...")
+    print("\nLogging in...")
     pageLoadSleep(1)
 
     ## On Dashboard panel, go to voting panel
@@ -137,10 +134,8 @@ while True:
     driver.quit() # this closes the entire window/ driver instance
 
     ## Loop block
-    print("")
-    print("Current time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
-    print(">> Script will automatically rerun in ~ 6 hours")
-    print("")
+    print("\nCurrent time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
+    print(">> Script will automatically rerun in ~ 6 hours\n")
     print("Please do not close your Command Prompt/ Terminal")
     print("To stop the program at any time, press CTRL + C")
-    time.sleep(21900.0 - ((time.time() - starttime) % 21900.0)) # DO NOT CHANGE TIME
+    time.sleep(21630.0 - ((time.time() - starttime) % 21630.0)) # DO NOT CHANGE TIME

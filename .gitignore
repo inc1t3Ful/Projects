@@ -4,3 +4,8 @@
 
 ## specific files
 /Productivity\ Scripts/chromedriver
+/Productivity\ Scripts/build
+/Productivity\ Scripts/dist
+/Productivity\ Scripts/setup.py
+/Productivity\ Scripts/__pycache__
+/Productivity\ Scripts/VoteCroosade.spec
