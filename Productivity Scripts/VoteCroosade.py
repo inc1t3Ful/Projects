@@ -1,7 +1,7 @@
 """
 VoteCroosade.py by Anthony Lee
-v2.0
-Last updated: 11 Jan 2019
+v2.5
+Last updated: 8 Feb 2019
 
 #########################################################################
 This script automates the voting process for CroosadeMS v100, a
@@ -68,14 +68,17 @@ while True:
     print("\nCurrent time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
     print(">> Navigating to Croosade site")
     driver.get("https://croosade.com/")
-    pageLoadSleep(1)
 
     ## Access drop down menu and click login
     print(">> Clicking Drop down menu")
-    dropDownAccountButton = driver.find_element_by_link_text("Account")
+    # dropDownAccountButton = driver.find_element_by_link_text("Account") # can refer to by ID: dropDownUser
+    dropDownAccountButton = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located((By.LINK_TEXT, "Account")))
     dropDownAccountButton.click()
     print(">> Clicking Sign In")
-    signInButton = driver.find_element_by_link_text("Sign in")
+    # signInButton = driver.find_element_by_link_text("Sign in")
+    signInButton = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located((By.LINK_TEXT, "Sign in")))
     signInButton.click()
 
     ## Enter login credentials
@@ -83,11 +86,10 @@ while True:
     print(">> Inputting username and password")
     print(">> Username: " + username)
     print(">> Password: " + password)
-    # Wait for login fields to be located before attempting to input
     usernameField = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((By.ID, 'inputUsername')))
+        EC.presence_of_element_located((By.ID, "inputUsername")))
     passwordField = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((By.ID, 'inputPassword')))
+        EC.presence_of_element_located((By.ID, "inputPassword")))
     usernameField.send_keys(username)
     passwordField.send_keys(password)
     submitLogin = driver.find_element_by_css_selector("#formLogin > button")
@@ -98,6 +100,7 @@ while True:
     ## On Dashboard panel, go to voting panel
     print("Currently on: << " + driver.current_url + " >>")
     print(">> Clicking Vote for NX")
+    currentNX = driver.find_element_by_css_selector("body > div.minh-100 > div > div.row > div:nth-child(1) > div > div.card-body > p").text
     voteForNX = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/div[1]/div/div[2]/a")
     voteForNX.click()
     pageLoadSleep(1)
@@ -106,20 +109,18 @@ while True:
     # by default, Gtop100 is already selected ; do not need to select dropdown menu
     print("Currently on: << " + driver.current_url + " >>")
     print(">> Voting for Gtop100")
+    selectTopList = driver.find_element_by_id("selectToplist")
     voteButton = driver.find_element_by_css_selector("#formVote > button")
     voteButton.click()
     driver.switch_to_window(driver.window_handles[0])
-    time.sleep(1)
 
     ## Vote for XtremeTop100
     print(">> Voting for XtremeTop100")
-    selectTopList = driver.find_element_by_id("selectToplist")
     selectOption2 = driver.find_element_by_css_selector("#selectToplist > option:nth-child(2)")
     selectTopList.click()
     selectOption2.click()
     voteButton.click()
     driver.switch_to_window(driver.window_handles[0])
-    time.sleep(1)
 
     ## Vote for TopG
     print(">> Voting for TopG")
@@ -128,12 +129,14 @@ while True:
     selectOption3.click()
     voteButton.click()
     driver.switch_to_window(driver.window_handles[0])
-    pageLoadSleep(2)
+    pageLoadSleep(1)
 
     print(">> Closing window")
     driver.quit() # this closes the entire window/ driver instance
 
     ## Loop block
+    newNXTotal = int(currentNX.replace(",", '')) + 4000
+    print("\n<< CURRENT NX TOTAL: " + str(newNXTotal) + " >>")
     print("\nCurrent time: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
     print(">> Script will automatically rerun in ~ 6 hours\n")
     print("Please do not close your Command Prompt/ Terminal")
