@@ -1,7 +1,7 @@
 """
 ProductivityTimer.py by Anthony Lee
-v2.1
-Last updated: 20 Dec 2018
+v2.2
+Last updated: 25 Jun 2020
 
 This script serves as a timer to facilitate productivity; it does so by
 tracking specified work periods and break times, notifying users of their respective
@@ -19,6 +19,8 @@ from time import sleep
 
 sysArg = sys.argv
 len_sysArg = len(sys.argv)
+unit_word = " minutes"
+default_unit = unit_word
 
 # argument length check
 if len_sysArg != 3:
@@ -37,31 +39,19 @@ try:
     study_minutes = int(sysArg[1])
     break_minutes = int(sysArg[2])
 
+    if study_minutes < 0 or break_minutes < 0:
+        raise ValueError("Int <= 0")
 except ValueError:
-if study_minutes < 0 or break_minutes < 0:
-    print(" ")
-    print(">> Invalid value for minutes")
-    print(">> Should be >= 0")
-    print(" ")
     print("\n>> Invalid numeric value for minutes")
     print(">> Should be an integer >= 0\n")
     print(">> Now exiting...")
     sys.exit(1)
 
-# unit measurment variable
-if study_minutes == 1:
-    unit_word = " minute"
-else:
-    unit_word = " minutes"
+def reset_unit():
+    global unit_word
+    unit_word = default_unit
 
-if break_minutes == 1:
-    unit_word = " minute"
-else:
-    unit_word = " minutes"
-
-# run timer. update every minute, boops when time up
 try:
-    # study timer
     if study_minutes > 0:
         print("\nBreak time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
         while study_minutes != 0:
@@ -70,12 +60,16 @@ try:
             time.sleep(60)
             study_minutes -= 1
 
+            if study_minutes == 1:
+                unit_word = " minute"
+
     for i in range(5):
         print(chr(7))
         sleep(1)
-    print("\nBreak time! :D\n")
 
-    # break timer
+    print("\nBreak time! :D\n")
+    reset_unit()
+
     if break_minutes > 0:
         print("\nEnjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
         while break_minutes != 0:
@@ -83,16 +77,19 @@ try:
             print(" ~ " + str(break_minutes) + unit_word + " of break left ~")
             time.sleep(60)
             break_minutes -= 1
+
+            if break_minutes == 1:
+                unit_word = " minute"
+
     for i in range(5):
         print(chr(7))
         sleep(1)
+
     print("\nBreak's over! Back to work O:\n")
 
-    # exit
     print(">> To continue, run the program again\n")
     print(">> Now exiting...")
 
-# manual override timer
 except KeyboardInterrupt:
     print("\n\nHey man, why you getting distracted D:\n")
     print(">> Now exiting...")
