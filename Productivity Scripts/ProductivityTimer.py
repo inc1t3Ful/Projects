@@ -1,7 +1,7 @@
 """
 ProductivityTimer.py by Anthony Lee
-v2.1
-Last updated: 20 Dec 2018
+v2.2
+Last updated: 25 Jun 2020
 
 This script serves as a timer to facilitate productivity; it does so by
 tracking specified work periods and break times, notifying users of their respective
@@ -19,20 +19,18 @@ from time import sleep
 
 sysArg = sys.argv
 len_sysArg = len(sys.argv)
+unit_word = " minutes"
+default_unit = unit_word
 
 # argument length check
 if len_sysArg != 3:
-    print(" ")
-    print(">> Usage: [ python3 ] Productivity_Timer.py study_minutes break_minutes")
-    print(">> Example: [ python3 ] Productivity_Timer.py 30 10")
-    print(" ")
+    print("\n>> Usage: [ python3 ] Productivity_Timer.py study_minutes break_minutes")
+    print(">> Example: [ python3 ] Productivity_Timer.py 30 10\n")
     print(">> Use a value of 0 minutes for testing the alarm immediately.")
     print(">> Boops a few times after the duration is over.")
-    print(">> Press Ctrl-C to terminate the alarm clock early.")
-    print(" ")
+    print(">> Press Ctrl-C to terminate the alarm clock early.\n")
     print(">> Studies suggests maximum productivity can be achieved with :")
-    print(">> ~52 minute work intervals and ~17 minute breaks ")
-    print(" ")
+    print(">> ~52 minute work intervals and ~17 minute breaks\n")
     print(">> Now exiting...")
     sys.exit(1)
 
@@ -41,77 +39,56 @@ try:
     study_minutes = int(sysArg[1])
     break_minutes = int(sysArg[2])
 
+    if study_minutes < 0 or break_minutes < 0:
+        raise ValueError("Int <= 0")
 except ValueError:
-    print(" ")
-    print(">> Invalid numeric value for minutes")
-    print(">> Should be an integer >= 0")
-    print(" ")
+    print("\n>> Invalid numeric value for minutes")
+    print(">> Should be an integer >= 0\n")
     print(">> Now exiting...")
     sys.exit(1)
 
-if study_minutes < 0 or break_minutes < 0:
-    print(" ")
-    print(">> Invalid value for minutes")
-    print(">> Should be >= 0")
-    print(" ")
-    print(">> Now exiting...")
-    sys.exit(1)
+def reset_unit():
+    global unit_word
+    unit_word = default_unit
 
-# unit measurment variable
-if study_minutes == 1:
-    unit_word = " minute"
-else:
-    unit_word = " minutes"
-
-if break_minutes == 1:
-    unit_word = " minute"
-else:
-    unit_word = " minutes"
-
-# run timer. update every minute, boops when time up
 try:
-    # study timer
     if study_minutes > 0:
-        print(" ")
-        print("Break time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
+        print("\nBreak time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
         while study_minutes != 0:
-            print(" ")
+            if study_minutes == 1:
+                unit_word = " minute"
+            print("\n")
             print(" ~ " + str(study_minutes) + unit_word + " left before break ~")
             time.sleep(60)
             study_minutes -= 1
+
     for i in range(5):
         print(chr(7))
         sleep(1)
-    print(" ")
-    print("Break time! :D")
-    print(" ")
 
-    # break timer
+    print("\nBreak time! :D\n")
+    reset_unit()
+
     if break_minutes > 0:
-        print(" ")
-        print("Enjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
+        print("\nEnjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
         while break_minutes != 0:
-            print(" ")
+            if break_minutes == 1:
+                unit_word = " minute"
+            print("\n")
             print(" ~ " + str(break_minutes) + unit_word + " of break left ~")
             time.sleep(60)
             break_minutes -= 1
+
     for i in range(5):
         print(chr(7))
         sleep(1)
-    print(" ")
-    print("Break's over! Back to work O:")
-    print(" ")
 
-    # exit
-    print(">> To continue, run the program again")
-    print(" ")
+    print("\nBreak's over! Back to work O:\n")
+
+    print(">> To continue, run the program again\n")
     print(">> Now exiting...")
 
-# manual override timer
 except KeyboardInterrupt:
-    print(" ")
-    print(" ")
-    print("Hey man, why you getting distracted D:")
-    print(" ")
+    print("\n\nHey man, why you getting distracted D:\n")
     print(">> Now exiting...")
     sys.exit(1)
