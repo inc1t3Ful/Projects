@@ -55,13 +55,12 @@ try:
     if study_minutes > 0:
         print("\nBreak time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
         while study_minutes != 0:
+            if study_minutes == 1:
+                unit_word = " minute"
             print("\n")
             print(" ~ " + str(study_minutes) + unit_word + " left before break ~")
             time.sleep(60)
             study_minutes -= 1
-
-            if study_minutes == 1:
-                unit_word = " minute"
 
     for i in range(5):
         print(chr(7))
@@ -73,13 +72,12 @@ try:
     if break_minutes > 0:
         print("\nEnjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
         while break_minutes != 0:
+            if break_minutes == 1:
+                unit_word = " minute"
             print("\n")
             print(" ~ " + str(break_minutes) + unit_word + " of break left ~")
             time.sleep(60)
             break_minutes -= 1
-
-            if break_minutes == 1:
-                unit_word = " minute"
 
     for i in range(5):
         print(chr(7))
