@@ -22,17 +22,13 @@ len_sysArg = len(sys.argv)
 
 # argument length check
 if len_sysArg != 3:
-    print(" ")
-    print(">> Usage: [ python3 ] Productivity_Timer.py study_minutes break_minutes")
-    print(">> Example: [ python3 ] Productivity_Timer.py 30 10")
-    print(" ")
+    print("\n>> Usage: [ python3 ] Productivity_Timer.py study_minutes break_minutes")
+    print(">> Example: [ python3 ] Productivity_Timer.py 30 10\n")
     print(">> Use a value of 0 minutes for testing the alarm immediately.")
     print(">> Boops a few times after the duration is over.")
-    print(">> Press Ctrl-C to terminate the alarm clock early.")
-    print(" ")
+    print(">> Press Ctrl-C to terminate the alarm clock early.\n")
     print(">> Studies suggests maximum productivity can be achieved with :")
-    print(">> ~52 minute work intervals and ~17 minute breaks ")
-    print(" ")
+    print(">> ~52 minute work intervals and ~17 minute breaks\n")
     print(">> Now exiting...")
     sys.exit(1)
 
@@ -42,18 +38,13 @@ try:
     break_minutes = int(sysArg[2])
 
 except ValueError:
-    print(" ")
-    print(">> Invalid numeric value for minutes")
-    print(">> Should be an integer >= 0")
-    print(" ")
-    print(">> Now exiting...")
-    sys.exit(1)
-
 if study_minutes < 0 or break_minutes < 0:
     print(" ")
     print(">> Invalid value for minutes")
     print(">> Should be >= 0")
     print(" ")
+    print("\n>> Invalid numeric value for minutes")
+    print(">> Should be an integer >= 0\n")
     print(">> Now exiting...")
     sys.exit(1)
 
@@ -72,46 +63,37 @@ else:
 try:
     # study timer
     if study_minutes > 0:
-        print(" ")
-        print("Break time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
+        print("\nBreak time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
         while study_minutes != 0:
-            print(" ")
+            print("\n")
             print(" ~ " + str(study_minutes) + unit_word + " left before break ~")
             time.sleep(60)
             study_minutes -= 1
+
     for i in range(5):
         print(chr(7))
         sleep(1)
-    print(" ")
-    print("Break time! :D")
-    print(" ")
+    print("\nBreak time! :D\n")
 
     # break timer
     if break_minutes > 0:
-        print(" ")
-        print("Enjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
+        print("\nEnjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
         while break_minutes != 0:
-            print(" ")
+            print("\n")
             print(" ~ " + str(break_minutes) + unit_word + " of break left ~")
             time.sleep(60)
             break_minutes -= 1
     for i in range(5):
         print(chr(7))
         sleep(1)
-    print(" ")
-    print("Break's over! Back to work O:")
-    print(" ")
+    print("\nBreak's over! Back to work O:\n")
 
     # exit
-    print(">> To continue, run the program again")
-    print(" ")
+    print(">> To continue, run the program again\n")
     print(">> Now exiting...")
 
 # manual override timer
 except KeyboardInterrupt:
-    print(" ")
-    print(" ")
-    print("Hey man, why you getting distracted D:")
-    print(" ")
+    print("\n\nHey man, why you getting distracted D:\n")
     print(">> Now exiting...")
     sys.exit(1)
