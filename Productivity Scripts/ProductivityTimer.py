@@ -9,11 +9,10 @@ starts and stops.
 """
 import sys
 import string
-import time
 from time import sleep
 
 # TODO:
-# 1. modularize code into FUNCTIONS
+# 1. modularize code into FUNCTIONS - DONE
 # 2. add ability to loop program a number of times
 # 3. improve UI
 
@@ -51,16 +50,28 @@ def reset_unit():
     global unit_word
     unit_word = default_unit
 
+def timer(type, minute_val):
+    global unit_word
+    if minute_val == 0:
+        return
+    if minute_val == 1:
+        unit_word == " minute"
+    if type == "study":
+        print("\n")
+        print(" ~ " + str(minute_val) + unit_word + " left before break ~")
+        sleep(60)
+        timer("study", minute_val-1)
+    if type == "break":
+        if minute_val == 1:
+            unit_word == " minute"
+        print("\n")
+        print(" ~ " + str(minute_val) + unit_word + " left before break ~")
+        sleep(60)
+        timer("break", minute_val - 1)
+
 try:
-    if study_minutes > 0:
-        print("\nBreak time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
-        while study_minutes != 0:
-            if study_minutes == 1:
-                unit_word = " minute"
-            print("\n")
-            print(" ~ " + str(study_minutes) + unit_word + " left before break ~")
-            time.sleep(60)
-            study_minutes -= 1
+    print("\nBreak time will be in " + str(study_minutes) + unit_word + "! Time to work c:")
+    timer("study", study_minutes)
 
     for i in range(5):
         print(chr(7))
@@ -69,15 +80,8 @@ try:
     print("\nBreak time! :D\n")
     reset_unit()
 
-    if break_minutes > 0:
-        print("\nEnjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
-        while break_minutes != 0:
-            if break_minutes == 1:
-                unit_word = " minute"
-            print("\n")
-            print(" ~ " + str(break_minutes) + unit_word + " of break left ~")
-            time.sleep(60)
-            break_minutes -= 1
+    print("\nEnjoy your break :D You gotta head back to work in " + str(break_minutes) + unit_word)
+    timer("break", break_minutes)
 
     for i in range(5):
         print(chr(7))
